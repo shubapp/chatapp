@@ -1,0 +1,19 @@
+<div class="modal fade" role="dialog" id="nicknameModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form ng-submit="handleNickname()">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">ChatApp</h4>
+        </div>
+        <div class="modal-body">
+          <p>Choose your user name</p>
+          <input tabindex="1" type="text" ng-model="username" placeholder="User name" />
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">OK</button>
+        </div>
+      </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

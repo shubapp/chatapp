@@ -1,0 +1,19 @@
+.chatContainer{
+	display: flex;
+	flex:1;
+}
+.chatBody{
+	height: 700px;
+	overflow-y: auto;
+}
+#buttom{
+	visibility: hidden;
+}
+.holyGrail{
+	padding-top:70px;
+	display: flex;
+	flex:1;
+}
+.rooms{
+	flex: 0 12em;
+}

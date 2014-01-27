@@ -1,0 +1,21 @@
+<div ng-app="chatApp">
+	<div class="panel panel-info">
+		<div class="panel-heading">Chat it out</div>
+  		<div class="panel-body chatBody">
+		 	<div ng-repeat="message in messages"  >
+		 		{{ message.time }}
+		    	{{ message.from }}: <span ng-bind-html="message.text">{{ message.text }}</span>
+		  	</div>
+		  	<span id="buttom">This is the end</span>
+	  	</div>
+		<div class="panel-footer">
+			<form ng-submit="handleMessage(username, freshMessage.text);scrollTo('buttom');">
+				<div class="input-group">
+				  <span class="input-group-addon">{{username}}:</span>
+				  <chatinput ng-model='freshMessage.text'></chatinput>
+				  <span class="input-group-btn"><input tabindex="3" class="btn btn-primary" type="submit" value="Send" />
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

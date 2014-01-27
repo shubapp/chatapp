@@ -1,0 +1,13 @@
+<div class="list-group">
+	<span class="list-group-item">Chat Rooms</span>
+	<a id="{{room.name}}" ng-repeat="room in rooms" 
+	ng-click="moveTo(room.name)" class="list-group-item {{room.style}}">
+		<span class="badge">{{room.usersCount}}</span>{{room.name}}
+	</a>
+	<span class="list-group-item">
+		<form ng-submit="createRoom()">
+			<input tabindex="4" style="width:100%;" class="list-group-item" ng-model="newRoom.name" /><br/>
+			<center><button  tabindex="5" type="sumbit" class="btn btn-primary">Add room</button></center>
+		</form>
+	</span>
+</div>
