@@ -32,7 +32,7 @@ function initConfig(){
 	});
 
 	io = io.listen(app.listen(port));
-
+	
 	ioHandle();
 
 	//vhost
@@ -44,6 +44,7 @@ function initConfig(){
 
 function ioHandle(){
 	io.set('log level', 2);
+	io.set('origins','*');
 	io.set('transports', [ 'websocket', 'xhr-polling' ]);
 
 	// socket.io events, each connection goes through here
