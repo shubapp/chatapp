@@ -244,10 +244,11 @@ function generateId(){
 	            S4() + "-" + S4() + S4() + S4());
 }
 
-var allowCrossDomain = function(req, res) {
-    res.header('Access-Control-Allow-Origin', "http://chat.shubapp.com");
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
+var allowCrossDomain = function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', "http://chat.shubapp.com");
+    res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    next();
 };
 
 
