@@ -13,6 +13,10 @@ var port = 80;
 chatClients = new Object();
 
 function initConfig(){
+	process.on('uncaughtException',function(err){
+		console.log("ERROR: " +err);
+	});
+
 	// dbHandle();
 	app.use(express.bodyParser());
 

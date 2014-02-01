@@ -2,7 +2,7 @@
 var chatModule = angular.module('chatApp.controllers',[]);
 // controlers section
 var controllers = {};
-var serverAddress='testchat.shubapp.com';
+var serverAddress='chat.shubapp.com';
 var NICK_MAX_LENGTH=15;
 var ROOM_MAX_LENGTH=10;
 var socket;
