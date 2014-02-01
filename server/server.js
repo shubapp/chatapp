@@ -13,6 +13,9 @@ var port = 80;
 chatClients = new Object();
 
 function initConfig(){
+	// Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://chat.shubapp.com');
+    
 	process.on('uncaughtException',function(err){
 		console.log("ERROR: " +err);
 	});
