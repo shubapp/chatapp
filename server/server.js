@@ -6,8 +6,11 @@ var io = require('socket.io');
 exports.app = app;
 
 
-//TODO:create a better way to use userName
+//todo use env
 var port = 80;
+var serverName = 'chat.shubapp.com';
+
+
 // hash object to save clients data,
 // { socketid: { clientid, nickname }, socketid: { ... } }
 chatClients = new Object();
@@ -36,7 +39,7 @@ function initConfig(){
 	ioHandle();
 
 	//vhost
-	app.use(express.vhost('chat.shubapp.com', this));
+	app.use(express.vhost(serverName, this));
 	
 	// show a message in console
 	console.log('Chat server is running and listening to port %d...', port);
@@ -44,7 +47,7 @@ function initConfig(){
 
 function ioHandle(){
 	io.set('log level', 2);
-	io.set('origins','*');
+	io.set('origins',serverName + ":" + port);
 	io.set('transports', [ 'websocket', 'xhr-polling' ]);
 
 	// socket.io events, each connection goes through here
@@ -246,7 +249,7 @@ function generateId(){
 }
 
 var allowCrossDomain = function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', "http://chat.shubapp.com");
+    res.setHeader('Access-Control-Allow-Origin', "http://" + serverName);
     res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     next();
