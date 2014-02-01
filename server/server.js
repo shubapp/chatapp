@@ -13,12 +13,11 @@ var port = 80;
 chatClients = new Object();
 
 function initConfig(){
-	// Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://chat.shubapp.com');
-    
 	process.on('uncaughtException',function(err){
 		console.log("ERROR: " +err);
 	});
+
+	app.use(allowCrossDomain);
 
 	// dbHandle();
 	app.use(express.bodyParser());
@@ -244,6 +243,14 @@ function generateId(){
 	return (S4() + S4() + "-" + S4() + "-" + S4() + "-" +
 	            S4() + "-" + S4() + S4() + S4());
 }
+
+var allowCrossDomain = function(req, res) {
+    res.header('Access-Control-Allow-Origin', "http://chat.shubapp.com");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+};
+
+
 
 // function dbHandle(){
 // 	//db connection
