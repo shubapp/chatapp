@@ -73,16 +73,29 @@ directives.chatinput= function () {
             ngModel.$render = function() {
                 element.html(ngModel.$viewValue || '');
             };
-            
+
             element.bind('keydown',function(event) {
                 if (event.keyCode==17){
                     ctrlKey=true;
+                } else if(event.keyCode==38){
+                    if (scope.myMessages.index==0) {
+                        scope.myMessages.index = scope.myMessages.log.length-1;
+                    }else{
+                        scope.myMessages.index--;
+                    }
+                    element.text(scope.myMessages.log[scope.myMessages.index]);
+                } else if(event.keyCode==40){
+                    if (scope.myMessages.index==scope.myMessages.log.length-1) {
+                        scope.myMessages.index = 0;
+                    }else{
+                        scope.myMessages.index++;
+                    }
+                    element.text(scope.myMessages.log[scope.myMessages.index]);
                 }
             });
 
             element.bind('blur keyup change', function(event) {
                 if(ctrlKey && event.keyCode==13){
-                    console.log(scope.freshMessage.text);
                     scope.handleMessage(scope.username, scope.freshMessage.text);
                     element.text("");
                 } else{

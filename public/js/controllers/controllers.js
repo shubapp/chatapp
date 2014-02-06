@@ -13,6 +13,7 @@ var serverDisplayName = 'Server';
 controllers.chatCtrl = function ($scope, $location, $anchorScroll, $http, user, $sce) {
 	var maxMessages = 10;
 	$scope.messages = [];
+	$scope.myMessages = {index:0,log:[""]};
 	$scope.clients=[];
 	$scope.currentRoom={name:"lobby",style:"active"};
 	$scope.rooms= [];
@@ -23,10 +24,11 @@ controllers.chatCtrl = function ($scope, $location, $anchorScroll, $http, user, 
 	}
 
 	$scope.addMessage = function(sender, message, showTime, isMe, isServer) {
-		message= message.replace(/:(\w+):/g, '<img style="max-width:100%;" src="http://a248.e.akamai.net/assets.github.com/images/icons/emoji/$1.png" title="$1" height="20" width="20" />');
+		message= message.replace(/:(\w+):/g, '<img src="http://a248.e.akamai.net/assets.github.com/images/icons/emoji/$1.png" title="$1" height="20" width="20" />');
 		message= $sce.trustAsHtml(message);
 
 		if(isMe){
+			$scope.myMessages.log.push(message);
 			$scope.messages.push({
 			  from: sender,
 			  text: message,
