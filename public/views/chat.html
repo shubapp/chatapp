@@ -9,7 +9,7 @@
 		  	<span id="buttom">This is the end</span>
 	  	</div>
 		<div class="panel-footer">
-			<form ng-submit="handleMessage(username, freshMessage.text);scrollTo('buttom');">
+			<form ng-submit="handleMessage(username, freshMessage.text)">
 				<div class="input-group">
 				  <span class="input-group-addon">{{username}}:</span>
 				  <chatinput ng-model='freshMessage.text'></chatinput>

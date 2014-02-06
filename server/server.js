@@ -9,7 +9,7 @@ exports.app = app;
 //todo use env
 var port = 80;
 var serverName = 'chat.shubapp.com';
-
+var messages = [];
 
 // hash object to save clients data,
 // { socketid: { clientid, nickname }, socketid: { ... } }
@@ -34,12 +34,16 @@ function initConfig(){
     	res.redirect('/index.html');
 	});
 
+	app.get('/live', function(req, res) {
+    	res.json(messages);
+	});
+
 	io = io.listen(app.listen(port));
 	
 	ioHandle();
 
 	//vhost
-	app.use(express.vhost(serverName, this));
+	// app.use(express.vhost(serverName, this));
 	
 	// show a message in console
 	console.log('Chat server is running and listening to port %d...', port);
@@ -47,7 +51,8 @@ function initConfig(){
 
 function ioHandle(){
 	io.set('log level', 2);
-	io.set('origins',serverName + ":" + port);
+	// io.set('origins',serverName + ":" + port);
+	io.set('origins',"*:*");
 	io.set('transports', [ 'websocket', 'xhr-polling' ]);
 
 	// socket.io events, each connection goes through here
@@ -136,8 +141,9 @@ function chatmessage(socket, data){
 	 // by using 'socket.broadcast' we can send/emit
 	 // a message/event to all other clients except
 	 // the sender himself
-	 socket.broadcast.to(data.room).emit('chatmessage', { client: 
-	           chatClients[socket.id], message: data.message, room: data.room });
+	 var message = { client: chatClients[socket.id], message: data.message, room: data.room };
+	 socket.broadcast.to(data.room).emit('chatmessage', message);
+	 messages.push(message);
 }
  
 // subscribe a client to a room

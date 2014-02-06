@@ -23,7 +23,7 @@ controllers.chatCtrl = function ($scope, $location, $anchorScroll, $http, user, 
 	}
 
 	$scope.addMessage = function(sender, message, showTime, isMe, isServer) {
-		message= message.replace(/:(\w+):/g, '<img src="http://a248.e.akamai.net/assets.github.com/images/icons/emoji/$1.png" title="$1" height="20" width="20" />');
+		message= message.replace(/:(\w+):/g, '<img style="max-width:100%;" src="http://a248.e.akamai.net/assets.github.com/images/icons/emoji/$1.png" title="$1" height="20" width="20" />');
 		message= $sce.trustAsHtml(message);
 
 		if(isMe){
@@ -47,6 +47,9 @@ controllers.chatCtrl = function ($scope, $location, $anchorScroll, $http, user, 
 				});
 			});
 		}
+		
+		$(".chatBody").scrollTop($(".chatBody").get(0).scrollHeight,100);
+		
 	};
 
 	$scope.scrollTo = function(id) {

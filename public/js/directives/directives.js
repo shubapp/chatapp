@@ -17,7 +17,7 @@ directives.username= function (user) {
 directives.chat= function () {
     return {
         restrict: 'E',
-        templateUrl: 'views/chat.html',
+        templateUrl: 'views/chat.html'
     };
 };
 
@@ -84,7 +84,6 @@ directives.chatinput= function () {
                 if(ctrlKey && event.keyCode==13){
                     console.log(scope.freshMessage.text);
                     scope.handleMessage(scope.username, scope.freshMessage.text);
-                    scope.scrollTo('buttom');
                     element.text("");
                 } else{
                     if (event.keyCode==17){

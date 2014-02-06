@@ -17,3 +17,6 @@
 .rooms{
 	flex: 0 12em;
 }
+.inline{
+	display: inline;
+}
