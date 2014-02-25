@@ -13,6 +13,7 @@ node server.js
 ```
 
 then you can visit http://localhost/ and chat with yourself.
+##### hubot is now supported!
 
 Summary
 -------
@@ -38,7 +39,6 @@ if there's any demand i will add usage of
 offline storage
 mongoDB
 passport
-hubot
 ```
 
 for more information, contact me at <deanshub@shubapp.com> or open an [issue](http://github.com/shubapp/chat/issues)

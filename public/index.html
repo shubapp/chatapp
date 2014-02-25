@@ -11,7 +11,7 @@
 <body ng-app="chatApp">
 	<div ng-controller="loginCtrl" username=""></div>
 	<!-- navigation bar -->
-    <nav ng-controller="navbarCtrl" class="navbar navbar-default" role="navigation">
+    <nav ng-controller="navbarCtrl" class="hidden-xs navbar navbar-default" role="navigation">
         <div class="container">
             <!-- when folded -->
             <div class="navbar-header">
@@ -36,7 +36,7 @@
     </nav>
 	
 	<div ng-controller="chatCtrl" class="holyGrail">
-		<rooms class="rooms"></rooms>
+		<rooms class="rooms hidden-xs"></rooms>
 		<chat class="container chatContainer"><chat/>
 	</div>
 	<div>{{userStatus}}</div>
