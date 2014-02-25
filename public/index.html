@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head style="display: none !important">
 	<title>ChatApp</title>
 	<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> -->
     <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css">
-    
 	<link rel="stylesheet" type="text/css" href="css/chat.css">
     <link rel="stylesheet" type="text/css" href="css/lib/jquery.atwho.css">
 </head>
@@ -12,7 +11,7 @@
 <body ng-app="chatApp">
 	<div ng-controller="loginCtrl" username=""></div>
 	<!-- navigation bar -->
-    <nav ng-controller="navbarCtrl" class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav ng-controller="navbarCtrl" class="navbar navbar-default" role="navigation">
         <div class="container">
             <!-- when folded -->
             <div class="navbar-header">

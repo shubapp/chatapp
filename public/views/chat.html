@@ -1,10 +1,13 @@
-<div ng-app="chatApp" class="fullwidth">
-	<div class="panel panel-info">
+<div ng-app="chatApp" class="fullwidth" id="chatContainer">
+	<div class="panel panel-info" id="chatPanel">
 		<div class="panel-heading">Chat it out</div>
   		<div class="panel-body chatBody">
-		 	<div ng-repeat="message in messages"  >
-		 		{{ message.time }}
-		    	{{ message.from }}: <span ng-bind-html="message.text">{{ message.text }}</span>
+		 	<div ng-repeat="message in messages">
+		 		<span class="message-author">{{ message.from }}:</span>
+		 		<span class="message-text">
+		 			{{ message.text }}
+					<time class="message-time">{{ message.time }}</time>
+	 			</span>
 		  	</div>
 		  	<span id="buttom">This is the end</span>
 	  	</div>
