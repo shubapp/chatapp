@@ -25,7 +25,7 @@ class Chatapp extends Adapter
         str = str.replace /<.*>/g, '<xmp class="inline">$&</xmp>'
         str = str.replace /\n/g, "<br/>"
         if (str.indexOf 'http://')!=-1 || (str.indexOf 'https://')!=-1
-          str = "<img src='".concat str,"'/>"
+          str = "<img class='hubotImage' src='".concat str,"'/>"
         socket.emit 'chatmessage', { 
           message: str
           room: 'lobby' 

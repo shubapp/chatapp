@@ -4,7 +4,7 @@
   		<div class="panel-body chatBody">
 		 	<div ng-repeat="message in messages">
 		 		<span class="message-author">{{ message.from }}:</span>
-		 		<span class="message-text">
+		 		<span class="message-text" ng-bind-html="message.text">
 		 			{{ message.text }}
 					<time class="message-time">{{ message.time }}</time>
 	 			</span>

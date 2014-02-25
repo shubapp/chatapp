@@ -36,6 +36,10 @@
 	display: inline;
 }
 
+.fullwidth{
+	width: 100%;
+}
+
 .message-author {
     font-weight: bold;
     padding: 1em;
@@ -91,4 +95,9 @@
 }
 .chatBody div:nth-child(2n) .message-text::after {
     border-right-color: #E8FFE9;
+}
+
+.hubotImage{
+	max-width: 100%;
+	max-height: 100%;
 }
