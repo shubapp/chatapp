@@ -21,6 +21,7 @@ controllers.chatCtrl = function ($scope, $location, $anchorScroll, $http, user, 
 	$scope.handleMessage = function(sender, message) {
 		socket.emit('chatmessage', { message: message, room: $scope.currentRoom.name });
 		$scope.addMessage(sender, message, true, true);
+		$('#textMessage').focus();
 	}
 
 	$scope.addMessage = function(sender, message, showTime, isMe, isServer) {
@@ -29,6 +30,7 @@ controllers.chatCtrl = function ($scope, $location, $anchorScroll, $http, user, 
 
 		if(isMe){
 			$scope.myMessages.log.push(message);
+			$scope.myMessages.index = 0;
 			$scope.messages.push({
 			  from: sender,
 			  text: message,
@@ -49,7 +51,9 @@ controllers.chatCtrl = function ($scope, $location, $anchorScroll, $http, user, 
 				});
 			});
 		}
-		
+		$("img").on("load",function(){
+            $(".chatBody").scrollTop($(".chatBody").get(0).scrollHeight,100);
+        });
 		$(".chatBody").scrollTop($(".chatBody").get(0).scrollHeight,100);
 		
 	};

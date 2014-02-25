@@ -10,6 +10,12 @@ directives.username= function (user) {
         link:function(scope, element, attrs){
             //TODO: change this to use element insted of jquery
             $('#nicknameModal').modal({keyboard: false,backdrop:false});
+            $('#nicknameModal').on('shown.bs.modal',function(e){
+                $('#username').focus();
+            });
+            $('#nicknameModal').on('hidden.bs.modal',function(e){
+                $('#textMessage').focus();
+            });
         }
     };
 };
@@ -66,7 +72,7 @@ directives.chatinput= function () {
     return {
         restrict: 'E',
         require: '?ngModel',
-        template: "<div contenteditable='true' atjs tabindex='2' class='form-control' style='width:100%;'></div>",
+        template: "<div id='textMessage' contenteditable='true' atjs tabindex='2' class='form-control' style='width:100%;'></div>",
         replace:true,
         link:function(scope, element, attrs, ngModel){
             var ctrlKey=false;
