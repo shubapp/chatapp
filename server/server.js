@@ -50,10 +50,14 @@ function initConfig(){
 }
 
 function ioHandle(){
-	io.set('log level', 2);
+	io.set('log level', 1);
 	// io.set('origins',serverName + ":" + port);
 	io.set('origins',"*:*");
-	io.set('transports', [ 'websocket', 'xhr-polling' ]);
+	io.set('transports', [ 'websocket'
+          , 'flashsocket'
+          , 'htmlfile'
+          , 'xhr-polling'
+          , 'jsonp-polling' ]);
 
 	// socket.io events, each connection goes through here
 	// and each event is emited in the client.

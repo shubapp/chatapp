@@ -1,0 +1,22 @@
+CACHE MANIFEST
+#20/3/14 11:11
+/index.html
+/css/chat.css
+/css/lib/jquery.atwho.css
+/js/app.js
+/js/services/services.js
+/js/controllers/controllers.js
+/js/directives/directives.js
+/js/lib/jquery.atwho.min.js
+/views/chat.html
+/views/nickname.html
+/views/rooms.html
+
+NETWORK:
+css/lib/bootstrap.min.css
+js/lib/angular.min.js
+js/lib/angular-route.min.js
+js/lib/jquery-1.11.0.min.js
+js/lib/bootstrap.min.js
+js/lib/socket.io.min.js
+*
