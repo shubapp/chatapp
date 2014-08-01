@@ -83,6 +83,7 @@ directives.chatinput= function () {
             element.bind('keydown',function(event) {
                 if (event.keyCode==17){
                     ctrlKey=true;
+                // up key
                 } else if(event.keyCode==38){
                     if (scope.myMessages.index==0) {
                         scope.myMessages.index = scope.myMessages.log.length-1;
@@ -90,6 +91,7 @@ directives.chatinput= function () {
                         scope.myMessages.index--;
                     }
                     element.text(scope.myMessages.log[scope.myMessages.index]);
+                // down key
                 } else if(event.keyCode==40){
                     if (scope.myMessages.index==scope.myMessages.log.length-1) {
                         scope.myMessages.index = 0;
@@ -101,13 +103,11 @@ directives.chatinput= function () {
             });
 
             element.bind('blur keyup change', function(event) {
-                if(ctrlKey && event.keyCode==13){
+                if(event.keyCode==13){
                     scope.handleMessage(scope.username, scope.freshMessage.text);
                     element.text("");
-                } else{
-                    if (event.keyCode==17){
-                        ctrlKey=false;
-                    }
+                } else if (event.keyCode==17){
+                    ctrlKey=false;
                 }
                 scope.$apply(read);
             });
