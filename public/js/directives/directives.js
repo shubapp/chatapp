@@ -103,11 +103,17 @@ directives.chatinput= function () {
             });
 
             element.bind('blur keyup change', function(event) {
+                 if (event.keyCode==17){
+                    ctrlKey=false;
+                }
+                scope.$apply(read);
+            });
+
+            element.bind('keypress', function(event) {
                 if(event.keyCode==13){
+                    event.preventDefault();
                     scope.handleMessage(scope.username, scope.freshMessage.text);
                     element.text("");
-                } else if (event.keyCode==17){
-                    ctrlKey=false;
                 }
                 scope.$apply(read);
             });
