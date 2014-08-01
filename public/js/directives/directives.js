@@ -72,7 +72,7 @@ directives.chatinput= function () {
     return {
         restrict: 'E',
         require: '?ngModel',
-        template: "<div id='textMessage' contenteditable='true' atjs tabindex='2' class='form-control' style='width:100%;'></div>",
+        template: "<input type='text' id='textMessage' atjs tabindex='2' class='form-control' style='width:100%;' />",
         replace:true,
         link:function(scope, element, attrs, ngModel){
             var ctrlKey=false;
