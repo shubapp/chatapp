@@ -1,5 +1,6 @@
 //var mongoose 		= require('mongoose');
 var express 		= require('express');
+var bodyParser = require('body-parser');
 var app 			= express();
 var io = require('socket.io');
 // var User       		= require('./models/user');
@@ -23,7 +24,10 @@ function initConfig(){
 	app.use(allowCrossDomain);
 
 	// dbHandle();
-	app.use(express.bodyParser());
+	app.use(bodyParser.urlencoded({
+	  extended: true
+	}));
+	app.use(bodyParser.json());
 
 	// Configure routes
 	app.configure(function(){

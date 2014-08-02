@@ -75,16 +75,9 @@ directives.chatinput= function () {
         template: "<input type='text' id='textMessage' atjs tabindex='2' class='form-control' style='width:100%;' />",
         replace:true,
         link:function(scope, element, attrs, ngModel){
-            var ctrlKey=false;
-            ngModel.$render = function() {
-                element.html(ngModel.$viewValue || '');
-            };
-
             element.bind('keydown',function(event) {
-                if (event.keyCode==17){
-                    ctrlKey=true;
                 // up key
-                } else if(event.keyCode==38){
+                if(event.keyCode==38){
                     if (scope.myMessages.index==0) {
                         scope.myMessages.index = scope.myMessages.log.length-1;
                     }else{
@@ -102,33 +95,16 @@ directives.chatinput= function () {
                 }
             });
 
-            element.bind('blur keyup change', function(event) {
-                 if (event.keyCode==17){
-                    ctrlKey=false;
-                }
-                scope.$apply(read);
-            });
-
             element.bind('keypress', function(event) {
                 if(event.keyCode==13){
                     event.preventDefault();
-                    scope.handleMessage(scope.username, scope.freshMessage.text);
-                    element.text("");
+                    scope.$apply(function(){
+                        scope.handleMessage(scope.username, scope.freshMessage.text);
+                        // element.text("");
+                        scope.freshMessage.text="";
+                    });
                 }
-                scope.$apply(read);
-            });
-            
-            read();
-
-            function read() {
-                var html = element.text();
-                // When we clear the content editable the browser leaves a <br> behind
-                // If strip-br attribute is provided then we strip this out
-                if( attrs.stripBr && html == '<br>' ) {
-                    html = '';
-                }
-                ngModel.$setViewValue(html);
-            }
+            });            
         }
     };
 };
