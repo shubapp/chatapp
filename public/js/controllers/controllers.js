@@ -24,12 +24,12 @@ controllers.chatCtrl = function ($scope, $location, $anchorScroll, $http, user, 
 		$('#textMessage').focus();
 	}
 
-	$scope.addMessage = function(sender, message, showTime, isMe, isServer) {
-		message= message.replace(/:(\w+):/g, '<img src="http://a248.e.akamai.net/assets.github.com/images/icons/emoji/$1.png" title="$1" height="20" width="20" />');
+	$scope.addMessage = function(sender, originalMessage, showTime, isMe, isServer) {
+		var message= originalMessage.replace(/:(\w+):/g, '<img src="http://a248.e.akamai.net/assets.github.com/images/icons/emoji/$1.png" title="$1" height="20" width="20" />');
 		message= $sce.trustAsHtml(message);
 
 		if(isMe){
-			$scope.myMessages.log.push(message);
+			$scope.myMessages.log.push(originalMessage);
 			$scope.myMessages.index = 0;
 			$scope.messages.push({
 			  from: sender,

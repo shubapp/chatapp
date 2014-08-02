@@ -72,26 +72,32 @@ directives.chatinput= function () {
     return {
         restrict: 'E',
         require: '?ngModel',
-        template: "<input type='text' id='textMessage' atjs tabindex='2' class='form-control' style='width:100%;' />",
+        template: "<input type='text' id='textMessage' atjs tabindex='2' class='form-control' autocomplete='off' style='width:100%;' />",
         replace:true,
         link:function(scope, element, attrs, ngModel){
             element.bind('keydown',function(event) {
                 // up key
                 if(event.keyCode==38){
+                    event.preventDefault();
                     if (scope.myMessages.index==0) {
                         scope.myMessages.index = scope.myMessages.log.length-1;
                     }else{
                         scope.myMessages.index--;
                     }
-                    element.text(scope.myMessages.log[scope.myMessages.index]);
+                    scope.$apply(function(){
+                        scope.freshMessage.text=scope.myMessages.log[scope.myMessages.index];
+                    });
                 // down key
                 } else if(event.keyCode==40){
+                    event.preventDefault();
                     if (scope.myMessages.index==scope.myMessages.log.length-1) {
                         scope.myMessages.index = 0;
                     }else{
                         scope.myMessages.index++;
                     }
-                    element.text(scope.myMessages.log[scope.myMessages.index]);
+                    scope.$apply(function(){
+                       scope.freshMessage.text=scope.myMessages.log[scope.myMessages.index];
+                    });
                 }
             });
 
@@ -100,8 +106,6 @@ directives.chatinput= function () {
                     event.preventDefault();
                     scope.$apply(function(){
                         scope.handleMessage(scope.username, scope.freshMessage.text);
-                        // element.text("");
-                        scope.freshMessage.text="";
                     });
                 }
             });            
